@@ -3,12 +3,18 @@ import base64
 import json
 from openai import OpenAI
 from dotenv import load_dotenv
+from pathlib import Path
 
-load_dotenv()
+env_path = Path(__file__).parent / '.env'
+load_dotenv(dotenv_path=env_path)
+
+api_key = os.getenv("OPENROUTER_API_KEY")
+if not api_key:
+    raise ValueError("OPENROUTER_API_KEY not found in .env file")
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY")
+    api_key=api_key
 )
 
 MODEL = os.getenv("OPENROUTER_MODEL", "openai/gpt-4-vision-preview")
