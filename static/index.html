@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitamin Deficiency Detection System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧬 Vitamin Deficiency Detection System</h1>
+            <p class="subtitle">AI-Powered Medical Image Analysis</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('admin')">Admin / Lab Assistant</button>
+            <button class="tab" onclick="showTab('patient')">Patient Portal</button>
+        </div>
+
+        <div id="admin-section" class="section active">
+            <h2>Upload Medical Image</h2>
+            <form id="upload-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Patient ID:</label>
+                    <input type="text" id="patient-id" required>
+                </div>
+                <div class="form-group">
+                    <label>Patient Name:</label>
+                    <input type="text" id="patient-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Address:</label>
+                    <input type="text" id="patient-address">
+                </div>
+                <div class="form-group">
+                    <label>Phone:</label>
+                    <input type="text" id="patient-phone">
+                </div>
+                <div class="form-group">
+                    <label>Medical Image:</label>
+                    <input type="file" id="image-file" accept="image/*" required>
+                    <div id="image-preview"></div>
+                </div>
+                <button type="submit" class="btn-primary">Analyze Image</button>
+            </form>
+
+            <div id="result-section" class="result-section" style="display:none;">
+                <h3>Analysis Result</h3>
+                <div id="result-content"></div>
+            </div>
+        </div>
+
+        <div id="patient-section" class="section">
+            <h2>Patient Portal</h2>
+            <div class="form-group">
+                <label>Enter Patient ID:</label>
+                <input type="text" id="patient-lookup-id">
+                <button onclick="loadPatientReports()" class="btn-primary">View Reports</button>
+            </div>
+
+            <div id="patient-reports" class="reports-section"></div>
+        </div>
+
+        <footer>
+            <p class="disclaimer">⚠️ This system is for educational purposes only. Not a medical diagnostic tool.</p>
+        </footer>
+    </div>
+
+    <div id="loading" class="loading" style="display:none;">
+        <div class="spinner"></div>
+        <p>Processing image...</p>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
